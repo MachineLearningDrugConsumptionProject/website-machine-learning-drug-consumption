@@ -22,14 +22,14 @@ CMD ["npm", "run", "dev"]
 # ==================================
 # BUILDING FOR PRODUCTION
 # ==================================
-FROM base As production
+# FROM base As production
 
-RUN npm install --ONLY=production
+# RUN npm install --ONLY=production
 
-COPY . .
+# COPY . .
 
-RUN npm run build
+# RUN npm run build
 
-EXPOSE 3000
+# EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+# CMD ["npm", "run", "start"]
