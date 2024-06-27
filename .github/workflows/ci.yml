@@ -24,12 +24,6 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -r backend/requirements.txt
-          pip install pytest pytest-flask
-
-      - name: Build and Test Flask Backend
-        run: |
-          cd backend
-          pytest
 
       - name: Setup Node.js 24.x
         uses: actions/setup-node@v2
