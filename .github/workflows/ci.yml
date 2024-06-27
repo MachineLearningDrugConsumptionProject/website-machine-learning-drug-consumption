@@ -1,0 +1,64 @@
+name: Flask & Next.js CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install Dependencies
+        run: |
+          pip install -r backend/requirements.txt
+          pip install pytest pytest-flask
+
+      - name: Build and Test Flask Backend
+        run: |
+          cd backend
+          pytest
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+
+      - name: Install Dependencies
+        run: |
+          cd frontend
+          npm install
+        
+      - name: Build and Test Next.js Frontend
+        run: |
+          cd frontend
+          npm run build
+          npm run test
+
+      - name: Build and Run Docker Containers
+        run: |
+          docker-compose up -d
+          docker-compose down
+      
+      - name: Deploy to Private VPS using SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/website-ocular-disease
+            docker-compose down
+            docker-compose up -d
