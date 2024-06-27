@@ -1,7 +1,10 @@
 import { Highlight } from "@/app/components/aceternity-ui/HeroHightlight";
 import { MemoizedStars } from "@/app/components/aceternity-ui/TextReveal";
+import { FrontendRoutesEnum } from "@/utils/routes";
+import Link from "next/link";
 
 export default function HomeHero() {
+
 
     return (
         <div className="flex flex-col relative min-h-screen w-full justify-center items-center gap-y-8 text-dark-primary">
@@ -17,13 +20,15 @@ export default function HomeHero() {
 
             </h3>
 
-            <button className="relative w-fit px-6 py-2 text-xl rounded-full border border-primary font-semibold backdrop-blur overflow-hidden group">
-                <span className="absolute inset-0 bg-dark-primary w-0 transition-all duration-500 origin-left group-hover:w-full"></span>
-                <span className="relative z-10 transition-all duration-500 group-hover:text-dark-background">
-                    Try it now
-                </span>
-                
-            </button>
+            <Link href={FrontendRoutesEnum.MODEL} >
+                <button className="relative w-fit px-6 py-2 text-xl rounded-full border border-primary font-semibold backdrop-blur overflow-hidden group">
+                    <span className="absolute inset-0 bg-dark-primary w-0 transition-all duration-500 origin-left group-hover:w-full"></span>
+                    <span className="relative z-10 transition-all duration-500 group-hover:text-dark-background">
+                        Try it now
+                    </span>
+
+                </button>
+            </Link>
 
 
         </div>

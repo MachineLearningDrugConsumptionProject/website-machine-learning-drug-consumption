@@ -1,13 +1,7 @@
-import Image from "next/image";
-import { BackgroundBeams } from "./components/aceternity-ui/BackgroundBeams";
 import HomeHero from "./pages/home/HomeHero";
 import HomeAbout from "./pages/home/HomeAbout";
 import HomeDataset from "./pages/home/HomeDataset";
 import PageTransition from "./components/transitions/PageTransition";
-
-export enum HomeElementEnum {
-  ABOUT = 'about',
-}
 
 export default function Home() {
   return (

@@ -31,7 +31,7 @@ export default function ParallaxCircleExpansion() {
               x: '-50%',
               y: '50%'
             }}
-            className="fixed bottom-0 left-1/2 bg-slate-200 origin-bottom"
+            className="fixed bottom-0 left-1/2 bg-light-background origin-bottom"
           />
 
         }

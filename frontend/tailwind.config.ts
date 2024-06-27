@@ -17,8 +17,12 @@ const config: Config = {
         "dark-primary": "#cdd2b9",
         "dark-secondary": "#123642",
         "dark-accent": "#F7E6C8",
+        "light-background": "#1f282a",
+        "light-primary": "#eaeeed",
+        "light-accent": "#F7E6C8",
       },
     },
+   
   },
   plugins: [
     addVariablesForColors,
@@ -33,6 +37,18 @@ const config: Config = {
         },
         { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
       );
+    },
+    function ({ addUtilities }: any) {
+      const newUtilities = {
+        ".text-shadow-custom": {
+          textShadow: `
+            1px 1px 2px rgba(145, 145, 145, 0.5),
+            1px 3px 3px rgba(16, 16, 16, 0.4),
+            1px 5px 5px rgba(16, 16, 16, 0.3)
+          `,
+        },
+      };
+      addUtilities(newUtilities, ["responsive", "hover"]);
     },
   ],
 };

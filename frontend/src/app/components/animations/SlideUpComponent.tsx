@@ -1,17 +1,17 @@
 'use client'
 
-import { cn } from "@/utils/cn"
-import { Variants, motion } from "framer-motion"
+import { cn } from "@/utils/cn";
+import { Variants, motion } from "framer-motion";
 import { useState } from "react";
 
-interface SlideUpTitleProps {
+interface SlideUpComponentProps {
     children: React.ReactNode,
     className?: string,
     blockColor?: string,
+    delay?: number,
 }
 
-
-export default function SlideUpTitle({ children, className, blockColor = 'bg-dark-background' }: SlideUpTitleProps) {
+export default function SlideUpComponent({ children, className, blockColor = 'bg-dark-background', delay = 0 }: SlideUpComponentProps) {
 
     const variants: Variants = {
         offscreen: {
@@ -22,12 +22,13 @@ export default function SlideUpTitle({ children, className, blockColor = 'bg-dar
             transition: {
                 type: "spring",
                 bounce: 0.5,
-                duration: 1
+                duration: 1,
+                delay: delay,
             },
         }
     };
 
-    const [isAnimationCompleted, setIsAnimationCompleted] = useState(false)
+    const [isAnimationCompleted, setIsAnimationCompleted] = useState(false);
 
     return (
         <motion.div className="relative flex h-full w-max text-end" >
@@ -43,9 +44,9 @@ export default function SlideUpTitle({ children, className, blockColor = 'bg-dar
             </motion.div>
             {
                 !isAnimationCompleted &&
-                <div className={`absolute ${blockColor} z-10 w-full h-full top-0  translate-y-full`}></div>
+                <div className={`absolute ${blockColor} z-10 w-full h-full top-0 translate-y-full`}></div>
             }
         </motion.div>
-    )
+    );
 
 }
