@@ -31,10 +31,10 @@ jobs:
           cd backend
           pytest
 
-      - name: Setup Node.js 20.x
+      - name: Setup Node.js 24.x
         uses: actions/setup-node@v2
         with:
-          node-version: '20.x'
+          node-version: '24.x'
 
       - name: Install Dependencies
         run: |
@@ -49,6 +49,7 @@ jobs:
 
       - name: Build and Run Docker Containers
         run: |
+          export TARGET=production
           docker-compose up -d
           docker-compose down
       
@@ -61,4 +62,5 @@ jobs:
           script: |
             cd /home/${{ secrets.USERNAME }}/website-ocular-disease
             docker-compose down
+            export TARGET=production
             docker-compose up -d
