@@ -18,11 +18,11 @@ export default function NavbarScrollIndicator() {
             height: '.2rem', 
             borderRadius: '16px', 
         }}>
-            <motion.div
+            <motion.div className='shadow'
                 style={{
                     scaleX: scaleX,
                     height: '100%',
-                    background: 'linear-gradient(90deg, #0f1220, #8cdad8)', 
+                    background: 'linear-gradient(90deg, #070a09, #F7E6C8)', 
                     transformOrigin: 'left center',
                     borderRadius: 'inherit' 
                 }}

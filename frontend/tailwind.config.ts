@@ -12,24 +12,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        "dark-background": "#070a09",
+        "dark-primary": "#cdd2b9",
+        "dark-secondary": "#123642",
+        "dark-accent": "#F7E6C8",
       },
-      textColor: {
-        background: "#070a09",
-        primary: "#cdd2b9",
-        accent: "#F7E6C8"
-      },
-      backgroundColor: {
-        background: "#070a09",
-        primary: "#cdd2b9",
-      },
-      borderColor:{
-        background: "#070a09",
-        primary: "#cdd2b9",
-      }
     },
   },
   plugins: [
