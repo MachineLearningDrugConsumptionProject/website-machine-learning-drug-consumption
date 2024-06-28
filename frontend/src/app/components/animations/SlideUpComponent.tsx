@@ -44,7 +44,7 @@ export default function SlideUpComponent({ children, className, blockColor = 'bg
             </motion.div>
             {
                 !isAnimationCompleted &&
-                <div className={`absolute ${blockColor} z-10 w-full h-full top-0 translate-y-full`}></div>
+                <div className={`absolute ${blockColor} z-10 w-full h-full top-0 translate-y-full border-none`}></div>
             }
         </motion.div>
     );

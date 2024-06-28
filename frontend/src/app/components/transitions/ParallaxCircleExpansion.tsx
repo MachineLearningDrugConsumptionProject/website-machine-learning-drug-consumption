@@ -14,11 +14,14 @@ export default function ParallaxCircleExpansion() {
     offset: ['start end', 'end start'],
   });
 
-  const size = useTransform(scrollYProgress, [0, 1], ['0vmin', '200vmax']);
-  const borderTopRadius = useTransform(scrollYProgress, [0, 0.9, 1], ['50%', '50%', '0%']);
+  const size = useTransform(
+    scrollYProgress,
+    [0, 0.8, 1],
+    ['0vmin', '200vmax', '200vmax']
+  );  const borderTopRadius = useTransform(scrollYProgress, [0, 0.9, 1], ['50%', '50%', '0%']);
 
   return (
-    <div ref={viewRef} className="h-[100vh] relative mt-24">
+    <div ref={viewRef} className="h-[100vh] relative mt-24 bg-light-background ">
       <div ref={scrollRef} className="h-full bg-gray-200">
         {
           isInView &&

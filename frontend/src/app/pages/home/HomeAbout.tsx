@@ -1,7 +1,7 @@
 'use client'
 
 import SlideUpComponent from "@/app/components/animations/SlideUpComponent";
-import { useScroll, motion, useTransform } from "framer-motion";
+import { useScroll, motion, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 
 
@@ -12,10 +12,11 @@ export default function HomeAbout() {
         target: ref,
         offset: ['end end', 'end start']
     })
+    const smoothProgress = useSpring(scrollYProgress, { mass: 0.1 })
 
-    const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
-    const scale = useTransform(scrollYProgress, [0.2, 0.6], [1, 0.8])
-    const translateY = useTransform(scrollYProgress, [0, 1], [0, 700])
+    const opacity = useTransform(smoothProgress, [0, 0.6], [1, 0])
+    const scale = useTransform(smoothProgress, [0.2, 0.6], [1, 0.8])
+    const translateY = useTransform(smoothProgress, [0, 1], [0, 700])
 
     return (
         <motion.div ref={ref} className="container flex w-full relative min-h-screen justify-center items-center text-dark-primary"
