@@ -5,11 +5,11 @@ interface SlideDownToolTipProps {
     className?: string,
 }
 
-export function SlideDownToolTip({ data, className }: SlideDownToolTipProps) {
+export function ToolTip({ data, className }: SlideDownToolTipProps) {
 
     return (
         <div className={
-            cn("absolute translate-x-[125%] -translate-y-1/2 w-fit h-fit grid grid-cols-1 items-center bg-white transition-all duration-300 scale-y-0 rounded-lg border-none",
+            cn("absolute translate-x-[125%] -translate-y-1/2 w-fit h-fit grid grid-cols-1 items-center bg-white transition-all duration-300 scale-y-0 rounded-lg border-none z-20",
                 className
             )}>
 
