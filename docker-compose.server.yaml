@@ -1,7 +1,6 @@
 # first image: daveandrew/machine-learning-frontend:latest
 # second image: daveandrew/machine-learning-backend:latest
 
-version: '3'
 services:
   frontend:
     image: daveandrew/machine-learning-frontend:latest
