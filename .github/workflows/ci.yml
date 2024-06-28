@@ -54,6 +54,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
+            mkdir -p /home/${{ secrets.USERNAME }}/website-ocular-disease
             cd /home/${{ secrets.USERNAME }}/website-ocular-disease
             docker-compose down
             export TARGET=production
