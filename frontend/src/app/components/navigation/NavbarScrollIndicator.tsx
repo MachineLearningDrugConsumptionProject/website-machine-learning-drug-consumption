@@ -16,7 +16,7 @@ export default function NavbarScrollIndicator() {
         <div style={{ 
             width: '100%', 
             height: '.2rem', 
-            borderRadius: '16px', 
+            borderRadius: '24px', 
         }}>
             <motion.div className='shadow'
                 style={{

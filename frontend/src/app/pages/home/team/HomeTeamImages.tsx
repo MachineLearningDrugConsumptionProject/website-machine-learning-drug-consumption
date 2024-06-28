@@ -20,40 +20,42 @@ export default function HomeTeamImages() {
         restDelta: 0.001
     })
 
-    const opacity = useTransform(smoothProgress, [0.5, 1], [1, 0])
-    const translateYFirst = useTransform(smoothProgress, [0.5, 1], [0, -400])
-    const translateYSecond = useTransform(smoothProgress, [0.5, 1], [0, 400])
-    const scale = useTransform(smoothProgress, [0.5, 1], [1, 0.8])
+    const opacity = useTransform(smoothProgress, [0.4, 1], [1, 0.3])
+    const translateYFirst = useTransform(smoothProgress, [0.45, 1], [0, -400])
+    const translateYSecond = useTransform(smoothProgress, [0.45, 1], [0, 400])
+    const scale = useTransform(smoothProgress, [0.4, 1], [1, 0.8])
 
     return (
-        <motion.div ref={cardsRef} className="flex container h-full relative justify-center gap-x-12 z-20"
-            style={{ scale }}>
-            <motion.div
-                ref={firstColumnRef}
-                className="flex flex-col gap-y-8"
-                style={{
-                    translateY: translateYFirst,
-                }}
-            >
-                <HomeTeamCard image={image} name="Jessica Ryan" />
-                <HomeTeamCard
-                    image={image}
-                    name="Dave Andrew Nathaniel"
-                // className={`${isInView ? 'translate-x-0 delay-300' : '-translate-x-full'}`} 
-                />
+            <motion.div ref={cardsRef} className="flex container h-full relative justify-center gap-x-12 z-20 overflow-hidden"
+                style={{ scale }}>
+                <motion.div
+                    ref={firstColumnRef}
+                    className="flex flex-col gap-y-8"
+                    style={{
+                        translateY: translateYFirst,
+                        opacity: opacity
+                    }}
+                >
+                    <HomeTeamCard image={image} name="Jessica Ryan" />
+                    <HomeTeamCard
+                        image={image}
+                        name="Dave Andrew Nathaniel"
+                    // className={`${isInView ? 'translate-x-0 delay-300' : '-translate-x-full'}`} 
+                    />
+                </motion.div>
+                <motion.div
+                    ref={secondColumnRef}
+                    className="flex flex-col gap-y-8"
+                    style={{
+                        translateY: translateYSecond,
+                        opacity: opacity
+                    }}
+                >
+                    <HomeTeamCard image={image} name="Anthonio Obert Lais"
+                    // className={`${isInView ? 'translate-x-0 delay-300' : 'translate-x-full'}`}
+                    />
+                    <HomeTeamCard image={image} name="Teresa Stefanie Sheryl" />
+                </motion.div>
             </motion.div>
-            <motion.div
-                ref={secondColumnRef}
-                className="flex flex-col gap-y-8"
-                style={{
-                    translateY: translateYSecond,
-                }}
-            >
-                <HomeTeamCard image={image} name="Anthonio Obert Lais"
-                // className={`${isInView ? 'translate-x-0 delay-300' : 'translate-x-full'}`}
-                />
-                <HomeTeamCard image={image} name="Teresa Stefanie Sheryl" />
-            </motion.div>
-        </motion.div>
     )
 }

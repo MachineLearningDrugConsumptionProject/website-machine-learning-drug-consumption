@@ -34,7 +34,7 @@ export default function HomeDataset() {
                 <HomeDatasetData />
             </motion.div>
 
-            <Link href={FrontendRoutesEnum.MODEL} >
+            <Link href={FrontendRoutesEnum.EDA} >
                 <button className="relative w-fit px-6 py-3 text-2xl rounded-full border border-dark-primary font-semibold backdrop-blur overflow-hidden group">
                     <span className="absolute inset-0 bg-light-accent w-0 transition-all duration-500 origin-left group-hover:w-full"></span>
                     <span className="relative z-10 transition-all duration-500 text-light-accent group-hover:text-dark-background">

@@ -24,7 +24,7 @@ export default function HomeTeamCard({ image, name, className }: HomeTeamCardPro
                 width={0}
                 height={0}
                 sizes={"100vw"} src={image} alt="team-image" className="w-full h-[48vh] object-cover shadow" />
-            <div className="flex-col w-full px-6 py-4 text-lg font-medium text-light-primary">
+            <div className="flex-col w-full px-6 py-4 text-lg font-medium text-dark-accent">
                 {name}
             </div>
         </div>

@@ -20,12 +20,13 @@ export default function HomeTeam() {
         restDelta: 0.001
     })
 
+    const translateY = useTransform(smoothProgress, [0.4, 1], ['0%', '200%'])
 
     return (
-        <section className="flex flex-col w-full min-h-screen items-center bg-dark-background relative mt-[75vh] pb-40">
-            <div className="container flex gap-x-16 ">
+        <section className="flex flex-col w-full min-h-screen items-center bg-dark-background relative mt-[75vh] pb-16">
+            <div ref={scrollRef} className="container flex gap-x-16 ">
                 <SlideUpComponent className="text-9xl w-full text-dark-background h-full relative" >
-                    <motion.div className="text-end" style={{ WebkitTextStroke: '1px #CDD2B9'}}>MEET THE TEAM</motion.div >
+                    <motion.div className="text-end" style={{ WebkitTextStroke: '1px #CDD2B9', translateY: translateY }}>MEET THE TEAM</motion.div >
                 </SlideUpComponent>
                 <HomeTeamImages />
             </div>
