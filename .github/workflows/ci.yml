@@ -80,8 +80,8 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
           mkdir /${{secrets.USERNAME}}/machine-learning-aol
-          scp -o StrictHostKeyChecking=no docker-compose.server.yaml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/${{ secrets.USERNAME}}/machine-learning-aol
           cd /${{secrets.USERNAME}}/machine-learning-aol
+          wget -O docker-composer.server.yaml https://raw.githubusercontent.com/MachineLearningDrugConsumptionProject/website-machine-learning-drug-consumption/main/docker-composer.server.yaml
           docker-compose -f docker-compose.server.yaml down
           docker-compose -f docker-compose.server.yaml pull
           docker-compose -f docker-compose.server.yaml up -d
