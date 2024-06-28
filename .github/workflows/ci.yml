@@ -1,3 +1,4 @@
+# CI/CD pipeline
 name: Flask & Next.js CI
 
 on:
