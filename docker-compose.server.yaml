@@ -1,0 +1,14 @@
+# first image: daveandrew/machine-learning-frontend:latest
+# second image: daveandrew/machine-learning-backend:latest
+
+services:
+  frontend:
+    image: daveandrew/machine-learning-frontend:latest
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+  backend:
+    image: daveandrew/machine-learning-backend:latest
+    ports:
+      - 5000:5000
