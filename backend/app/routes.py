@@ -3,13 +3,11 @@ import xgboost as xgb
 import numpy as np
 import os
 import sys
-from flask_cors import CORS
 
 sys.path.append("..")
 from model.mappings import age_mapping, gender_mapping, education_mapping, country_mapping, ethnicity_mapping, drug_col
 
 main_bp = Blueprint('main', __name__)
-CORS(main_bp)
 
 @main_bp.route('/')
 def index():
