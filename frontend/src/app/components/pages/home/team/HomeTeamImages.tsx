@@ -36,9 +36,9 @@ export default function HomeTeamImages() {
                         opacity: opacity
                     }}
                 >
-                    <HomeTeamCard image={image} name="Jessica Ryan" />
+                    <HomeTeamCard image={'/assets/images/team/jeer.jpg'} name="Jessica Ryan" />
                     <HomeTeamCard
-                        image={image}
+                        image={'/assets/images/team/dep2.jpg'}
                         name="Dave Andrew Nathaniel"
                     // className={`${isInView ? 'translate-x-0 delay-300' : '-translate-x-full'}`} 
                     />
