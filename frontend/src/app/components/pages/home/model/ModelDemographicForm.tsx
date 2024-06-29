@@ -65,8 +65,7 @@ export default function ModelDemographicForm({ currentForm, handleAddData }: Mod
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<PredictDemographicDto>({ resolver: zodResolver(PredictDemographicSchema) })
 
     const onSubmit: SubmitHandler<PredictDemographicDto> = (data) => {
-        console.log(data);
-
+        console.log("sumbitting data: ", data);
         handleAddData(data)
     }
 

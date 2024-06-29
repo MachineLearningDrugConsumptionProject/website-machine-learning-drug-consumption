@@ -15,6 +15,19 @@ export default function ModelForm() {
     const [currentForm, setCurrentForm] = useState<ModelFormEnum>(ModelFormEnum.DEMOGRAPHIC)
     const [data, setData] = useState<Partial<PredictDto>>()
 
+    const sendAPI = async (data: Partial<PredictDto>) => {
+        const res = await fetch('http://127.0.0.1:8080/api/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        console.log("Result: ", result);
+    }
+
     const handleAddDemographicData = (demographicData: PredictDemographicDto) => {
         setData(prevData => ({
             ...prevData,
@@ -23,14 +36,14 @@ export default function ModelForm() {
         setCurrentForm(ModelFormEnum.PSYCHOLOGIC)
     }
 
-    const handleAddPsychologicData = (psychologicData: PredictPsychologicDto) => {
+    const handleAddPsychologicData = async (psychologicData: PredictPsychologicDto) => {
+        console.log("Testing")
         setData(prevData => ({
             ...prevData,
             ...psychologicData
         }));
-
-        console.log(data);
-        
+        console.log("data:",data);       
+        await sendAPI(data!); 
     }
 
     return (

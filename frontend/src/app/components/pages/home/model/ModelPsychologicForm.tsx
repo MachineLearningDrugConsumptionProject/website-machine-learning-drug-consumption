@@ -19,8 +19,7 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<PredictPsychologicDto>({ resolver: zodResolver(PredictPsychologicSchema) })
 
     const onSubmit: SubmitHandler<PredictPsychologicDto> = (data) => {
-        console.log(data);
-
+        console.log("sumbitting data: ", data);
         handleAddData(data)
     }
 
@@ -104,7 +103,8 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
             />
 
             <div className="col-span-2 w-full flex mt-8">
-                <button type="submit" className="relative mx-auto w-fit px-4 py-2 text-lg rounded-full border border-dark-primary font-semibold backdrop-blur overflow-hidden group">
+                <button type="submit" 
+                onClick = {()=> handleSubmit}className="relative mx-auto w-fit px-4 py-2 text-lg rounded-full border border-dark-primary font-semibold backdrop-blur overflow-hidden group">
                     <span className="absolute inset-0 bg-light-accent w-0 transition-all duration-500 origin-left group-hover:w-full"></span>
                     <span className="relative z-10 transition-all duration-500 text-light-accent group-hover:text-dark-background">
                         Check our EDA
