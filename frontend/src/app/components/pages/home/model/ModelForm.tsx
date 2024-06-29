@@ -4,6 +4,7 @@ import { useState } from "react";
 import ModelDemographicForm from "./ModelDemographicForm";
 import { PredictDemographicDto, PredictDto, PredictPsychologicDto } from "@/dto/PredictDto";
 import ModelPsychologicForm from "./ModelPsychologicForm";
+import axios from "axios";
 
 export enum ModelFormEnum {
     DEMOGRAPHIC = 'DEMOGRAPHIC',
@@ -14,6 +15,7 @@ export default function ModelForm() {
 
     const [currentForm, setCurrentForm] = useState<ModelFormEnum>(ModelFormEnum.DEMOGRAPHIC)
     const [data, setData] = useState<Partial<PredictDto>>()
+    const [predictResult, setPredictResult] = useState<string | null>(null); // Initialize with null
 
     const handleAddDemographicData = (demographicData: PredictDemographicDto) => {
         setData(prevData => ({
@@ -23,14 +25,47 @@ export default function ModelForm() {
         setCurrentForm(ModelFormEnum.PSYCHOLOGIC)
     }
 
-    const handleAddPsychologicData = (psychologicData: PredictPsychologicDto) => {
+    const handleAddPsychologicData = async (psychologicData: PredictPsychologicDto) => {
         setData(prevData => ({
             ...prevData,
             ...psychologicData
         }));
+       
+        const requestData = {
+            age: data?.PredictDemographicSchema?.age,
+            gender: data?.PredictDemographicSchema?.gender,
+            education: data?.PredictDemographicSchema?.education,
+            country: data?.PredictDemographicSchema?.country,
+            ethnicity: data?.PredictDemographicSchema?.ethnicity,
 
-        console.log(data);
+            n_score: data?.PredictPsychologicSchema?.nScore,
+            e_score: data?.PredictPsychologicSchema?.eScore,
+            o_score: data?.PredictPsychologicSchema?.oScore,
+            a_score: data?.PredictPsychologicSchema?.aScore,
+            c_score: data?.PredictPsychologicSchema?.cScore,
+            impulsive: data?.PredictPsychologicSchema?.impulsive,
+            ss: data?.PredictPsychologicSchema?.ss,
+
+        }
+
+        console.log(requestData);
         
+        try {
+            const baseURL = 'http://localhost:8000';
+            const response = await axios.post(`${baseURL}/predict`, requestData);
+    
+            if (response.status === 200) {
+                console.log(response);
+                
+                setPredictResult(response.data.prediction); // Assuming Flask returns { prediction: result } in JSON
+            } else {
+                throw new Error('Failed to get prediction');
+            }
+    
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle error scenario in your UI if needed
+        }   
     }
 
     return (
