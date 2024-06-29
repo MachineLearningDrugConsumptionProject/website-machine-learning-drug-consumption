@@ -4,7 +4,7 @@ from .routes import main_bp
 
 def create_app():
     app = Flask(__name__)
-    CORS(app)
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
     
     app.register_blueprint(main_bp, url_prefix='/api')
 

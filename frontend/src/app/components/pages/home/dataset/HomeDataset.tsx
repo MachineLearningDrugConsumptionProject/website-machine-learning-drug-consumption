@@ -7,6 +7,7 @@ import { useRef } from "react";
 import HomeEDA from "../HomeEDA";
 import { FrontendRoutesEnum } from "@/utils/routes";
 import Link from "next/link";
+import HomeModel from "../HomeModel";
 
 export default function HomeDataset() {
 
@@ -26,6 +27,7 @@ export default function HomeDataset() {
     return (
         <motion.div ref={ref} className="flex flex-col w-full min-h-screen justify-center items-center bg-light-background rounded-2xl border-none gap-y-12 z-10"
             style={{ scale, translateY }}>
+            
             <motion.div className="container flex flex-col justify-center items-center h-full gap-y-20">
                 <SlideUpComponent blockColor="bg-light-background" className="text-5xl font-semibold text-light-accent" >
                     <h3>Our dataset consists of</h3>
@@ -42,6 +44,7 @@ export default function HomeDataset() {
                     </span>
                 </button>
             </Link>
+
         </motion.div>
     )
 }
