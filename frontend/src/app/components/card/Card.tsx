@@ -13,6 +13,7 @@ interface TerminalCardProps {
 
 const Card: React.FC<TerminalCardProps> = ({ title, description, imagePath }) => {
     const [showImage, setShowImage] = useState(false);
+    const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
     
     const toggleImage = () => {
         setShowImage(!showImage);
@@ -22,6 +23,11 @@ const Card: React.FC<TerminalCardProps> = ({ title, description, imagePath }) =>
 
     const toggleImageSize = () => {
       setShowFullImage(!showFullImage);
+    };
+
+    const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+        const { naturalWidth, naturalHeight } = event.currentTarget;
+        setImageDimensions({ width: naturalWidth, height: naturalHeight });
     };
   
     return (
@@ -42,8 +48,18 @@ const Card: React.FC<TerminalCardProps> = ({ title, description, imagePath }) =>
           <h2 className="text-2xl font-bold mb-4">{title}</h2>
           <p className="text-gray-700 mb-4">{description}</p>
           {showImage && imagePath && (
-            <div className="relative w-full h-96 mb-4 overflow-hidden" onClick={toggleImageSize}>
-              <Image src={imagePath} alt="Card" layout="fill" objectFit="cover" />
+            <div
+              className={`relative w-full mb-4 overflow-hidden ${showFullImage ? '' : 'h-96'}`}
+              onClick={toggleImageSize}
+              style={showFullImage ? { height: imageDimensions.height, width: imageDimensions.width } : {}}
+            >
+                <Image 
+                  src={imagePath}
+                  alt="Card" 
+                  layout="fill" 
+                  objectFit={showFullImage ? 'contain' : 'cover'}
+                  onLoad={handleImageLoad}
+                />
             </div>
           )}
           {/* <Modal isOpen={showFullImage} onClose={toggleImageSize} imagePath={imagePath} /> */}
