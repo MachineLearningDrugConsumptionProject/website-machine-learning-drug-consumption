@@ -3,7 +3,7 @@ import HomeTeamCard from "./HomeTeamCard";
 import { useRef } from "react";
 
 export default function HomeTeamImages() {
-    const image = '/assets/images/team/WIN_20230504_16_36_45_Pro.jpg'
+    const image = '/assets/images/team/obert.jpg'
 
     const cardsRef = useRef(null)
     const firstColumnRef = useRef(null)
@@ -36,9 +36,9 @@ export default function HomeTeamImages() {
                         opacity: opacity
                     }}
                 >
-                    <HomeTeamCard image={image} name="Jessica Ryan" />
+                    <HomeTeamCard image={'/assets/images/team/jeer.jpg'} name="Jessica Ryan" />
                     <HomeTeamCard
-                        image={image}
+                        image={'/assets/images/team/dep2.jpg'}
                         name="Dave Andrew Nathaniel"
                     // className={`${isInView ? 'translate-x-0 delay-300' : '-translate-x-full'}`} 
                     />
@@ -51,10 +51,10 @@ export default function HomeTeamImages() {
                         opacity: opacity
                     }}
                 >
-                    <HomeTeamCard image={image} name="Anthonio Obert Lais"
+                    <HomeTeamCard image={'/assets/images/team/obert.jpg'} name="Anthonio Obert Lais"
                     // className={`${isInView ? 'translate-x-0 delay-300' : 'translate-x-full'}`}
                     />
-                    <HomeTeamCard image={image} name="Teresa Stefanie Sheryl" />
+                    <HomeTeamCard image={'/assets/images/team/sheryl.jpg'} name="Teresa Stefanie Sheryl" />
                 </motion.div>
             </motion.div>
     )
