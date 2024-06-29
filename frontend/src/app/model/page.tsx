@@ -29,7 +29,7 @@ export default function Model() {
         }));
 
         try {
-            const baseURL = 'http://127.0.0.1:5000';
+            const baseURL = 'http://154.41.254.221:5000';
             const response = await axios.post(`${baseURL}/api/predict`, data);
 
             if (response.status === 200) {
