@@ -36,7 +36,7 @@ export default function HomeAbout() {
 
                 <div className="flex flex-col w-7/12 gap-y-8 text-xl tracking-wider leading-relaxed">
                     <p className="indent-8">We uses an advanced method that combines psychological and demographic characteristics to predict usage trends of <b className="text-dark-accent">19 substances. </b>
-                        It considers <b className="text-dark-accent">psychological traits</b>, <b className="text-dark-accent">demographic features</b>, and <b>individual variations</b> in drug-use habits,
+                        It considers <b className="text-dark-accent">psychological traits</b>, <b className="text-dark-accent">demographic features</b>, and <b className="text-dark-accent">individual variations</b> in drug-use habits,
                         improving accuracy and providing insights into the intricate interactions.</p>
 
                     <p className="indent-8"><b className="text-dark-accent">Our goal is to</b> provide a powerful tool to understand and
