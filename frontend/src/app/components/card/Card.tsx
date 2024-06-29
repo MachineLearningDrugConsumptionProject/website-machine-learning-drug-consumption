@@ -31,7 +31,8 @@ const Card: React.FC<TerminalCardProps> = ({ title, description, imagePath }) =>
     };
   
     return (
-        <div className="w-full max-w-3xl mx-auto bg-dark-accent text-gray-900 rounded-lg shadow-md overflow-hidden border border-gray-300 transform transition-all duration-300 hover:scale-105">
+        <div className="w-full max-w-4xl mx-auto backdrop-blur-md text-dark-accent rounded-lg shadow-md overflow-hidden border border-gray-300 transform transition-all duration-300 hover:scale-105"
+          onClick={toggleImage}>
         <div className="p-6 relative">
           <div className="absolute top-2 right-2">
             <button
@@ -46,18 +47,19 @@ const Card: React.FC<TerminalCardProps> = ({ title, description, imagePath }) =>
             </button>
           </div>
           <h2 className="text-2xl font-bold mb-4">{title}</h2>
-          <p className="text-gray-700 mb-4">{description}</p>
+          <p className="text-dark-primary mb-4">{description}</p>
           {showImage && imagePath && (
             <div
-              className={`relative w-full mb-4 overflow-hidden ${showFullImage ? '' : 'h-96'}`}
+              className={`relative w-full overflow-hidden`}
               onClick={toggleImageSize}
-              style={showFullImage ? { height: imageDimensions.height, width: imageDimensions.width } : {}}
             >
                 <Image 
                   src={imagePath}
+                  width={0}
+                  height={0}
+                  sizes='100vw'
                   alt="Card" 
-                  layout="fill" 
-                  objectFit={showFullImage ? 'contain' : 'cover'}
+                  className='w-full h-full object-fill m-auto'
                   onLoad={handleImageLoad}
                 />
             </div>
