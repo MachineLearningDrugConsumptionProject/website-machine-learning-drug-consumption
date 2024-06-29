@@ -2,7 +2,7 @@ import { MemoizedStars } from "../components/aceternity-ui/TextReveal";
 import Card from "../components/card/Card";
 import ModelForm from "../components/pages/home/model/ModelForm";
 
-export default function Model() {
+export default function EDA() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-center bg-dark-background relative py-32">
