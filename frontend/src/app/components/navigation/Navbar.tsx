@@ -7,7 +7,7 @@ export default function Navbar() {
     return (
         <div className="flex flex-col w-full fixed z-50 items-center backdrop-blur-sm ">
 
-            <div className="flex container h-full py-8 px-12  text-accent  font-bold">
+            <div className="flex container h-full py-8 px-12 text-accent font-bold">
                 <Link href={FrontendRoutesEnum.HOME} >
                     <h3 className="text-4xl drop-shadow text-transparent" style={{ WebkitTextStroke: '1px #F7E6C8' }}>
                         Dep

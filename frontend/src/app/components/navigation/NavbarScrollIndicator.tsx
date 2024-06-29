@@ -10,8 +10,6 @@ export default function NavbarScrollIndicator() {
         damping: 90,
     });
 
-    console.log(scrollYProgress);
-
     return (
         <div style={{ 
             width: '100%', 

@@ -1,10 +1,8 @@
-import HomeHero from "./pages/home/HomeHero";
-import HomeAbout from "./pages/home/HomeAbout";
-import HomeDataset from "./pages/home/dataset/HomeDataset";
-import HomeTeam from "./pages/home/team/HomeTeam";
+import HomeHero from "./components/pages/home/HomeHero";
+import HomeAbout from "./components/pages/home/HomeAbout";
+import HomeDataset from "./components/pages/home/dataset/HomeDataset";
+import HomeTeam from "./components/pages/home/team/HomeTeam";
 import ParallaxCircleExpansion from "./components/transitions/ParallaxCircleExpansion";
-import Footer from "./components/footers/Footer";
-import HomeEDA from "./pages/home/HomeEDA";
 
 export default function Home() {
   return (

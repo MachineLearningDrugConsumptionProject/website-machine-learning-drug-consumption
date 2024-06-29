@@ -152,7 +152,7 @@ const Stars = () => {
   const randomOpacity = () => Math.random();
   const random = () => Math.random();
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 pointer-events-none">
       {[...Array(120)].map((_, i) => (
         <motion.span
           key={`star-${i}`}
