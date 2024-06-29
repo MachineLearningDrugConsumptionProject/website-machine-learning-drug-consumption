@@ -17,7 +17,7 @@ export default function HomeTeamCard({ image, name, className }: HomeTeamCardPro
     const isInView = useInView(ref, { amount: 0.5 })
 
     return (
-        <div ref={ref} className={cn('flex flex-col h-fit w-[24vw] bg-dark-background transition-opacity duration-500 opacity-0', className,
+        <div ref={ref} className={cn('flex flex-col h-fit min-w-[22vw] bg-dark-background transition-opacity duration-500 opacity-0', className,
             { 'opacity-100': isInView }
         )}>
             <Image

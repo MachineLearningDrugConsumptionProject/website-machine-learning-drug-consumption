@@ -26,7 +26,7 @@ export default function HomeTeamImages() {
     const scale = useTransform(smoothProgress, [0.4, 1], [1, 0.8])
 
     return (
-            <motion.div ref={cardsRef} className="flex container h-full relative justify-center gap-x-12 z-20 overflow-hidden"
+            <motion.div ref={cardsRef} className="flex w-full h-full relative justify-center gap-x-12 z-20 overflow-hidden"
                 style={{ scale }}>
                 <motion.div
                     ref={firstColumnRef}
