@@ -1,75 +1,33 @@
 'use client'
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ModelDemographicForm from "./ModelDemographicForm";
 import { PredictDemographicDto, PredictDto, PredictPsychologicDto } from "@/dto/PredictDto";
 import ModelPsychologicForm from "./ModelPsychologicForm";
 import axios from "axios";
+import { useInView } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 
 export enum ModelFormEnum {
     DEMOGRAPHIC = 'DEMOGRAPHIC',
     PSYCHOLOGIC = 'PSYCHOLOGIC'
 }
 
-export default function ModelForm() {
+interface ModelFormProps {
+    handleAddDemographicData: (data: PredictDemographicDto) => void,
+    handleAddPsychologicData: (data: PredictPsychologicDto) => void,
+    currentForm: ModelFormEnum
+    setCurrentForm: (form: ModelFormEnum) => void,
+    predictionResult: string | null
+}
 
-    const [currentForm, setCurrentForm] = useState<ModelFormEnum>(ModelFormEnum.DEMOGRAPHIC)
-    const [data, setData] = useState<Partial<PredictDto>>()
-    const [predictResult, setPredictResult] = useState<string | null>(null); // Initialize with null
+export default function ModelForm({ handleAddDemographicData, handleAddPsychologicData, currentForm, setCurrentForm, predictionResult }: ModelFormProps) {
 
-    const handleAddDemographicData = (demographicData: PredictDemographicDto) => {
-        setData(prevData => ({
-            ...prevData,
-            ...demographicData
-        }));
-        setCurrentForm(ModelFormEnum.PSYCHOLOGIC)
-    }
-
-    const handleAddPsychologicData = async (psychologicData: PredictPsychologicDto) => {
-        setData(prevData => ({
-            ...prevData,
-            ...psychologicData
-        }));
-       
-        const requestData = {
-            age: data?.PredictDemographicSchema?.age,
-            gender: data?.PredictDemographicSchema?.gender,
-            education: data?.PredictDemographicSchema?.education,
-            country: data?.PredictDemographicSchema?.country,
-            ethnicity: data?.PredictDemographicSchema?.ethnicity,
-
-            n_score: data?.PredictPsychologicSchema?.nScore,
-            e_score: data?.PredictPsychologicSchema?.eScore,
-            o_score: data?.PredictPsychologicSchema?.oScore,
-            a_score: data?.PredictPsychologicSchema?.aScore,
-            c_score: data?.PredictPsychologicSchema?.cScore,
-            impulsive: data?.PredictPsychologicSchema?.impulsive,
-            ss: data?.PredictPsychologicSchema?.ss,
-
-        }
-
-        console.log(requestData);
-        
-        try {
-            const baseURL = 'http://localhost:8000';
-            const response = await axios.post(`${baseURL}/predict`, requestData);
-    
-            if (response.status === 200) {
-                console.log(response);
-                
-                setPredictResult(response.data.prediction); // Assuming Flask returns { prediction: result } in JSON
-            } else {
-                throw new Error('Failed to get prediction');
-            }
-    
-        } catch (error) {
-            console.error('Error:', error);
-            // Handle error scenario in your UI if needed
-        }   
-    }
+    const ref = useRef(null)
+    const isInView = useInView(ref, { amount: 0.2 })
 
     return (
-        <div className="flex flex-col min-h-screen justify-center items-center w-full h-full relative py-32">
+        <div ref={ref} className="flex flex-col min-h-screen justify-center items-center w-full h-full relative py-32">
 
             <div className="flex flex-col justify-center items-center h-full gap-y-16 bg-light-background rounded-2xl 
             bg-opacity-20 p-16">
@@ -81,9 +39,17 @@ export default function ModelForm() {
 
                 </div>
 
-                <ModelDemographicForm currentForm={currentForm} handleAddData={handleAddDemographicData} />
-                <ModelPsychologicForm currentForm={currentForm} handleAddData={handleAddPsychologicData} />
+                <ModelDemographicForm currentForm={currentForm} setCurrentForm={setCurrentForm} handleAddData={handleAddDemographicData} />
+                <ModelPsychologicForm currentForm={currentForm} setCurrentForm={setCurrentForm} handleAddData={handleAddPsychologicData} />
             </div>
+
+            {
+                (predictionResult != null && isInView && currentForm === ModelFormEnum.PSYCHOLOGIC)  &&
+                <div className="absolute flex w-full px-32 justify-between bottom-32 animate-pulse">
+                    <ArrowDown size={40} className="text-dark-accent animate-bounce opacity-50" />
+                    <ArrowDown size={40} className="text-dark-accent animate-bounce opacity-50" />
+                </div>
+            }
         </div>
     )
 }

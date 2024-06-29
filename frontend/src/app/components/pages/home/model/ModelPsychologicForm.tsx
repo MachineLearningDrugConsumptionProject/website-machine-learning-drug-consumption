@@ -5,16 +5,17 @@ import SelectInput from "@/app/components/forms/SelectInput";
 import { PredictDemographicDto, PredictDemographicSchema, PredictPsychologicDto, PredictPsychologicSchema } from "@/dto/PredictDto";
 import { cn } from "@/utils/cn";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Baby, CircleArrowDown } from "lucide-react";
+import { Baby, CircleArrowUp } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ModelFormEnum } from "./ModelForm";
 
 interface ModelPsychologicFormProps {
     currentForm: ModelFormEnum,
     handleAddData: (data: PredictPsychologicDto) => void
+    setCurrentForm: (form: ModelFormEnum) => void
 }
 
-export default function ModelPsychologicForm({ currentForm, handleAddData }: ModelPsychologicFormProps) {
+export default function ModelPsychologicForm({ currentForm, handleAddData, setCurrentForm }: ModelPsychologicFormProps) {
 
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<PredictPsychologicDto>({ resolver: zodResolver(PredictPsychologicSchema) })
 
@@ -29,6 +30,11 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
             { 'opacity-0 hidden': currentForm === ModelFormEnum.DEMOGRAPHIC }
         )
         }>
+            <div className="absolute w-full top-32 left-0 flex">
+                <button onClick={() => setCurrentForm(ModelFormEnum.DEMOGRAPHIC)} className={`w-fit h-fit mx-auto animate-bounce`}>
+                    <CircleArrowUp size={40} className="text-dark-accent " />
+                </button>
+            </div>
 
             <Input
                 icon={<Baby size={24} className="text-dark-accent" />}
@@ -38,7 +44,7 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
                 type="number"
                 min={12}
                 max={60}
-                {...register('nScore', {valueAsNumber: true})}
+                {...register('nScore', { valueAsNumber: true })}
             />
             <Input
                 icon={<Baby size={24} className="text-dark-accent" />}
@@ -48,7 +54,7 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
                 type="number"
                 min={12}
                 max={60}
-                {...register('eScore', {valueAsNumber: true})}
+                {...register('eScore', { valueAsNumber: true })}
             />
             <Input
                 icon={<Baby size={24} className="text-dark-accent" />}
@@ -58,7 +64,7 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
                 type="number"
                 min={12}
                 max={60}
-                {...register('oScore', {valueAsNumber: true})}
+                {...register('oScore', { valueAsNumber: true })}
             />
             <Input
                 icon={<Baby size={24} className="text-dark-accent" />}
@@ -68,7 +74,7 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
                 type="number"
                 min={12}
                 max={60}
-                {...register('aScore', {valueAsNumber: true})}
+                {...register('aScore', { valueAsNumber: true })}
             />
 
             <Input
@@ -79,7 +85,7 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
                 type="number"
                 min={12}
                 max={60}
-                {...register('cScore', {valueAsNumber: true})}
+                {...register('cScore', { valueAsNumber: true })}
             />
             <Input
                 icon={<Baby size={24} className="text-dark-accent" />}
@@ -89,7 +95,7 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
                 type="number"
                 min={12}
                 max={60}
-                {...register('impulsive', {valueAsNumber: true})}
+                {...register('impulsive', { valueAsNumber: true })}
             />
             <Input
                 icon={<Baby size={24} className="text-dark-accent" />}
@@ -99,15 +105,15 @@ export default function ModelPsychologicForm({ currentForm, handleAddData }: Mod
                 type="number"
                 min={12}
                 max={60}
-                {...register('ss', {valueAsNumber: true})}
+                {...register('ss', { valueAsNumber: true })}
             />
 
             <div className="col-span-2 w-full flex mt-8">
-                <button type="submit" 
-                onClick = {()=> handleSubmit}className="relative mx-auto w-fit px-4 py-2 text-lg rounded-full border border-dark-primary font-semibold backdrop-blur overflow-hidden group">
+                <button type="submit"
+                    onClick={() => handleSubmit} className="relative mx-auto w-fit px-4 py-2 text-lg rounded-full border border-dark-primary font-semibold backdrop-blur overflow-hidden group">
                     <span className="absolute inset-0 bg-light-accent w-0 transition-all duration-500 origin-left group-hover:w-full"></span>
                     <span className="relative z-10 transition-all duration-500 text-light-accent group-hover:text-dark-background">
-                        Check our EDA
+                        Predict Now
                     </span>
                 </button>
             </div>

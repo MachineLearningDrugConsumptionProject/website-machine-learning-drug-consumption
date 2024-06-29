@@ -1,8 +1,9 @@
 from flask import Blueprint, request, jsonify
 import xgboost as xgb
 import numpy as np
-
+import os
 import sys
+
 sys.path.append("..")
 from model.mappings import age_mapping, gender_mapping, education_mapping, country_mapping, ethnicity_mapping, drug_col
 
@@ -17,19 +18,20 @@ def predict():
     
     try:
         model = xgb.XGBRegressor()
-        model.load_model('model.xgb')
-        
+        model_path = os.path.join(os.path.dirname(__file__), '../model/model.xgb')
+        model.load_model(model_path)
+
         data = request.get_json(force= True)
         age = data.get('age')
         gender = data.get('gender')
         education = data.get('education')
         country = data.get('country')
         ethnicity = data.get('ethnicity')
-        nscore = data.get('nscore')
-        escore = data.get('escore')
-        oscore = data.get('oscore')
-        ascore = data.get('ascore')
-        cscore = data.get('cscore')
+        n_score = data.get('n_score')
+        e_score = data.get('e_score')
+        o_score = data.get('o_score')
+        a_score = data.get('a_score')
+        c_score = data.get('c_score')
         impulsive = data.get('impulsive')
         ss = data.get('ss')
 
@@ -42,7 +44,7 @@ def predict():
 
         # Prepare input data for prediction (both categorical and numerical features)
         input_data = np.array([[age_encoded, gender_encoded, education_encoded, country_encoded, ethnicity_encoded,
-                                nscore, escore, oscore, ascore, cscore, impulsive, ss]])
+                                n_score, e_score, o_score, a_score, c_score, impulsive, ss]])
 
         # Make prediction
         y_test_pred = model.predict(input_data)[0]
