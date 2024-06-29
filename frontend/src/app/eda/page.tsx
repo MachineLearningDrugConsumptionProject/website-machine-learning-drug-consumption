@@ -26,6 +26,13 @@ export default function Model() {
                     <Card title="TSNE()" description="Displaying TSNE for each categorical feature" imagePath="/assets/images/EDA/tsne.jpg"/>
                     <Card title="sns.heatmap(data.corr())" description="Displaying Heatmap" imagePath="/assets/images/EDA/heatmap.jpg"/>
                 </div>
+                <h3 className="text-5xl font-medium text-light-accent">Data Preprocessing</h3>
+                <div className="flex flex-col min-h-screen items-center w-full h-full m-8 gap-4">
+                    <Card title="data.replace()" description="Replacing Data with New Values" imagePath="/assets/images/EDA/replace.jpg"/>
+                    {/* <Card title="PolynomialFeatures()" description="Feature Engineering" imagePath="/assets/images/EDA/feature.jpg"/> */}
+                    <Card title="train_test_split()" description="Splitting Data into Test and Train" imagePath="/assets/images/EDA/traintest.jpg"/>
+                    <Card title="RobustScaler()" description="Scale Feature" imagePath="/assets/images/EDA/scaler.jpg"/>
+                </div>
             </div>
         </main>
     )
